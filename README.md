@@ -1,11 +1,42 @@
 # Mango CLI downloads
 
-Public Linux CLI binaries for Mango, for use in cloud agents and containers.
+Public Mango CLI distribution for Linux and macOS, including cloud agents and containers.
 The application source and development history remain private. This repository
 contains distribution instructions only; releases contain binaries and the
 installer, not the application source.
 
-## Install during dependency setup
+## Install with npm (Linux and macOS)
+
+Requires Node.js 18+. Supports x64 and ARM64 on Linux and macOS (12 or later).
+The command remains `mango`; the npm package is `@mrcoworld/mango`.
+
+```sh
+npm install --global @mrcoworld/mango
+mango --version
+mango update
+```
+
+For a project dependency, pin a release and invoke it locally:
+
+```sh
+npm install --save-dev @mrcoworld/mango@0.10.2
+npx --no-install mango --version
+npx --no-install mango update
+npx --no-install mango update --latest
+```
+
+Normal project updates respect the dependency range. `--latest` moves to the
+latest release while retaining the dependency category. Global updates select
+latest in the original npm prefix. Workspaces/transitive installations should
+use npm update in the owning workspace. Updates require registry access and
+write permission; Mango issue/doc files and local state are preserved.
+
+The npm package bundles all four native executables with SQLite support, a small
+Node launcher, the license, and instructions. It has no dependencies or install
+scripts: `--ignore-scripts` installations work. No GitHub login, Go, or C compiler
+is needed. The Go application source remains private.
+
+## Install a Linux binary without Node.js
 
 Requires Linux x86-64 or ARM64, `curl`, `tar`, and `sha256sum` (or `shasum`).
 No GitHub login, token, Go toolchain, C compiler, or GUI is required.
@@ -63,8 +94,8 @@ project's ignores or stage the intended file with `git add -f -- PATH`.
 
 ## Distribution contents
 
-Each release includes `install.sh`, `checksums.txt`, and the amd64 and ARM64
-archives. Each archive contains only `mango`, `LICENSE`, and `INSTALL.txt`.
+The initial GitHub v0.10.2 release includes `install.sh`, `checksums.txt`, and the Linux amd64 and ARM64
+archives. The npm package additionally includes both macOS architectures. Each archive contains only `mango`, `LICENSE`, and `INSTALL.txt`.
 GitHub's automatic source archives contain this distribution README only.
 Linux binaries include SQLite support. Apple signing and the desktop GUI are
 not provided by these Linux CLI downloads.
