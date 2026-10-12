@@ -16,14 +16,16 @@ mango --version
 mango update
 ```
 
-For a project dependency, pin a release and invoke it locally:
+For a project dependency, install the latest release and invoke it locally:
 
 ```sh
-npm install --save-dev @mrcoworld/mango@0.10.2
+npm install --save-dev @mrcoworld/mango
 npx --no-install mango --version
 npx --no-install mango update
 npx --no-install mango update --latest
 ```
+
+By default npm saves a range such as `^0.10.2`, even when the install command specifies `@0.10.2`. Use `--save-exact` for an exact pin. Commit the lockfile and use `npm ci` for repeatable agent setup.
 
 Normal project updates respect the dependency range. `--latest` moves to the
 latest release while retaining the dependency category. Global updates select
