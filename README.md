@@ -25,7 +25,7 @@ npx --no-install mango update
 npx --no-install mango update --latest
 ```
 
-By default npm saves a range such as `^0.10.2`, even when the install command specifies `@0.10.2`. Use `--save-exact` for an exact pin. Commit the lockfile and use `npm ci` for repeatable agent setup.
+By default npm saves a range such as `^0.12.1`, even when the install command specifies `@0.12.1`. Use `--save-exact` for an exact pin. Commit the lockfile and use `npm ci` for repeatable agent setup.
 
 Normal project updates respect the dependency range. `--latest` moves to the
 latest release while retaining the dependency category. Global updates select
@@ -45,7 +45,7 @@ No GitHub login, token, Go toolchain, C compiler, or GUI is required.
 
 ```sh
 set -eu
-MANGO_VERSION=v0.10.2
+MANGO_VERSION=v0.12.1
 setup_dir=$(mktemp -d)
 trap 'rm -rf "$setup_dir"' EXIT
 curl --fail --silent --show-error --location --proto '=https' --proto-redir '=https' \
@@ -96,7 +96,7 @@ project's ignores or stage the intended file with `git add -f -- PATH`.
 
 ## Distribution contents
 
-The initial GitHub v0.10.2 release includes `install.sh`, `checksums.txt`, and the Linux amd64 and ARM64
+The initial GitHub v0.12.1 release includes `install.sh`, `checksums.txt`, and the Linux amd64 and ARM64
 archives. The npm package additionally includes both macOS architectures. Each archive contains only `mango`, `LICENSE`, and `INSTALL.txt`.
 GitHub's automatic source archives contain this distribution README only.
 Linux binaries include SQLite support. Apple signing and the desktop GUI are
